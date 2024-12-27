@@ -2,7 +2,7 @@
 name = "crane-company"
 version = "0.1.0"
 description = ""
-authors = ["poleshkomi <poleshkomi@modeltech.ru>"]
+authors = ["poleshkomi <mishapoleshko@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
