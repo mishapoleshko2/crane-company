@@ -38,9 +38,6 @@ def upgrade() -> None:
             ["company.id"],
             name=op.f("fk_department_company_id_company"),
         ),
-        # sa.ForeignKeyConstraint(
-        #     ["head_id"], ["employee.id"], name=op.f("fk_department_head_id_employee")
-        # ),
         sa.PrimaryKeyConstraint("id", name=op.f("pk_department")),
     )
     op.create_index(
@@ -91,6 +88,7 @@ def upgrade() -> None:
     op.create_index(
         op.f("ix_user_company_company_id"), "user_company", ["company_id"], unique=False
     )
+    op.create_foreign_key(op.f('fk_department_head_id_employee'), 'department', 'employee', ['head_id'], ['id'])
     # ### end Alembic commands ###
 
 
