@@ -1,6 +1,6 @@
 from sqlalchemy import MetaData
 from sqlalchemy.ext.asyncio import AsyncAttrs, create_async_engine, async_sessionmaker
-from sqlalchemy.orm import DeclarativeBase, declarative_base
+from sqlalchemy.orm import DeclarativeBase
 
 from crane_company.settings import settings
 
