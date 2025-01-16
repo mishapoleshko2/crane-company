@@ -88,7 +88,13 @@ def upgrade() -> None:
     op.create_index(
         op.f("ix_user_company_company_id"), "user_company", ["company_id"], unique=False
     )
-    op.create_foreign_key(op.f('fk_department_head_id_employee'), 'department', 'employee', ['head_id'], ['id'])
+    op.create_foreign_key(
+        op.f("fk_department_head_id_employee"),
+        "department",
+        "employee",
+        ["head_id"],
+        ["id"],
+    )
     # ### end Alembic commands ###
 
 

@@ -7,7 +7,7 @@ from crane_company.infra.sqlalchemy_db.db import Base
 class Employee(Base):
     __tablename__ = "employee"
 
-    id: Mapped[int] = mapped_column(primary_key=int)
+    id: Mapped[int] = mapped_column(primary_key=True)
 
     first_name: Mapped[str] = mapped_column(nullable=False)
     last_name: Mapped[str] = mapped_column(nullable=False)
