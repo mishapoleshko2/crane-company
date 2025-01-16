@@ -3,10 +3,14 @@ import typer
 from fastapi import FastAPI
 import pyfiglet
 
+from crane_company.app.error_handlers import ERROR_HANDLERS
 from crane_company.app.routers.company import router as company_router
 
 app = FastAPI()
 app.include_router(company_router)
+
+for exc, handler in ERROR_HANDLERS.items():
+    app.add_exception_handler(exc, handler)
 
 
 def main(
