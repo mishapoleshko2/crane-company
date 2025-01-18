@@ -1,7 +1,7 @@
 import uvicorn
 import typer
 from fastapi import FastAPI
-import pyfiglet
+import pyfiglet  # type: ignore
 
 from crane_company.app.error_handlers import ERROR_HANDLERS
 from crane_company.app.routers.company import router as company_router

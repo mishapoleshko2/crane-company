@@ -8,4 +8,12 @@ class CompanyCreatingInputDTO(BaseModel):
     user_id: int
 
 
-CompanyCreatingOutputDTO = Company
+CompanyUseCasesOutputDTO = Company
+
+
+class CompanyUpdatingInputDTO(BaseModel):
+    name: str
+
+
+class CompanyGettingInputDTO(BaseModel):
+    company_id: int
