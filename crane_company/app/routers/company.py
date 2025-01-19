@@ -16,7 +16,7 @@ from crane_company.interactor.use_cases.company import (
     CompanyGettingUseCase,
 )
 
-router = APIRouter(prefix="/api/company", tags=["company"])
+router = APIRouter(prefix="/api/companies", tags=["company"])
 
 
 @router.post("/", summary="Creating company")
