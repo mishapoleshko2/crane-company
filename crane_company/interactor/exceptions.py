@@ -7,5 +7,10 @@ class UserHasCompanyException(SystemException):
 
 
 class CompanyNotFound(SystemException):
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__("Company not found")
+
+
+class DepartmentNotFound(SystemException):
+    def __init__(self) -> None:
+        super().__init__("Department not found")

@@ -25,12 +25,12 @@ class CompanyCreatingUseCase:
 
 @dataclass
 class CompanyUpdatingUseCase:
-    repo: CompanyRepository
+    company_repository: CompanyRepository
 
     async def execute(
         self, input_dto: CompanyUpdatingInputDTO, company_id: int
     ) -> CompanyUseCasesOutputDTO:
-        company = await self.repo.update_company(company_id, input_dto)
+        company = await self.company_repository.update_company(company_id, input_dto)
         if not company:
             raise CompanyNotFound
         return company
@@ -38,12 +38,12 @@ class CompanyUpdatingUseCase:
 
 @dataclass
 class CompanyGettingUseCase:
-    repo: CompanyRepository
+    company_repository: CompanyRepository
 
     async def execute(
         self, input_dto: CompanyGettingInputDTO
     ) -> CompanyUseCasesOutputDTO:
-        company = await self.repo.get_company(input_dto.company_id)
+        company = await self.company_repository.get_company(input_dto.company_id)
         if not company:
             raise CompanyNotFound
         return company
