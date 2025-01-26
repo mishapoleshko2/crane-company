@@ -2,6 +2,7 @@ from sqlalchemy import ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column
 
 from crane_company.infra.sqlalchemy_db.db import Base
+from crane_company.domain.models.employee import Employee as DomainEmployee
 
 
 class Employee(Base):
@@ -22,3 +23,16 @@ class Employee(Base):
 
     phone_number: Mapped[str] = mapped_column(nullable=True)
     email: Mapped[str] = mapped_column(nullable=True)
+
+    def to_entity(self) -> None:
+        employee = DomainEmployee(
+            id=self.id,
+            first_name=self.first_name,
+            last_name=self.last_name,
+            middle_name=self.middle_name,
+            company_id=self.company_id,
+            department_id=self.department_id,
+            phone_number=self.phone_number,
+            email=self.email,
+        )
+        return employee

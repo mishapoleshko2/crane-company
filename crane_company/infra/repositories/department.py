@@ -1,5 +1,4 @@
 from dataclasses import dataclass
-from typing import Any
 
 from sqlalchemy.sql import delete, and_, select
 from sqlalchemy.ext.asyncio.session import AsyncSession

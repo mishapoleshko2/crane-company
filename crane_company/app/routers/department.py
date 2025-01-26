@@ -19,9 +19,7 @@ from crane_company.interactor.use_cases.department import (
 )
 
 
-router = APIRouter(
-    prefix="/api/companies/{company_id}/departments", tags=["department"]
-)
+router = APIRouter(prefix="/{company_id}/departments", tags=["department"])
 
 
 @router.post("/")

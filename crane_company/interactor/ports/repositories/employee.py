@@ -1,10 +1,8 @@
 from typing import Protocol
 
 from crane_company.domain.models.employee import Employee
+from crane_company.interactor.dto.employee import EmployeeCreatingInputDTO
 
 
 class EmployeeRepository(Protocol):
-    def create_employee(
-        self, first_name: str, last_name: str, middle_name: str | None = None
-    ) -> Employee:
-        pass
+    async def create_employee(self, data: EmployeeCreatingInputDTO) -> Employee: ...

@@ -1,4 +1,4 @@
-from typing import Protocol, Any
+from typing import Protocol
 
 from crane_company.domain.models.department import Department
 from crane_company.interactor.dto.department import DepartmentUpdatingInputDTO

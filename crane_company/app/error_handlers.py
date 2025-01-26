@@ -4,7 +4,11 @@ from fastapi import Response, Request, status
 from fastapi.responses import JSONResponse
 
 from crane_company.exceptions import SystemException
-from crane_company.interactor.exceptions import UserHasCompanyException, CompanyNotFound
+from crane_company.interactor.exceptions import (
+    CompanyHasNotDepartmenError,
+    UserHasCompanyException,
+    CompanyNotFound,
+)
 
 __all__ = ("ERROR_HANDLERS",)
 
@@ -12,6 +16,7 @@ __all__ = ("ERROR_HANDLERS",)
 CODE_MAPPING: dict[type[Exception], int] = {
     UserHasCompanyException: status.HTTP_409_CONFLICT,
     CompanyNotFound: status.HTTP_404_NOT_FOUND,
+    CompanyHasNotDepartmenError: status.HTTP_404_NOT_FOUND,
 }
 
 
