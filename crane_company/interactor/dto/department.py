@@ -22,5 +22,5 @@ DepartmentUseCasesOutputDTO = Department
 
 
 class DepartmentUpdatingInputDTO(BaseModel):
-    name: str = Field(default_factory=str)
+    name: str | None = Field(default=None)
     head_id: int | None = Field(default=None)

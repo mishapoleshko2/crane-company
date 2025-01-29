@@ -2,7 +2,7 @@ from typing import Annotated
 
 from fastapi import APIRouter, Depends, Response, status
 
-from crane_company.app.dependencies import get_department_repository
+from crane_company.app.dependencies import get_department_repository, get_employee_repository
 from crane_company.interactor.dto.department import (
     DeparnmentCreatingInputDTO,
     APIDeparnmentCreatingInputDTO,
@@ -11,6 +11,7 @@ from crane_company.interactor.dto.department import (
     DepartmentUseCasesOutputDTO,
 )
 from crane_company.interactor.ports.repositories.departmeny import DepartmentRepository
+from crane_company.interactor.ports.repositories.employee import EmployeeRepository
 from crane_company.interactor.use_cases.department import (
     CompanyDepartmentsGettingUseCase,
     DepartmentCreatingUseCase,
@@ -56,9 +57,10 @@ async def update_department(
         DepartmentRepository,
         Depends(get_department_repository),
     ],
+    employee_repository: Annotated[EmployeeRepository, Depends(get_employee_repository)],
     data: DepartmentUpdatingInputDTO,
 ) -> DepartmentUseCasesOutputDTO:
-    use_case = DepartmentUpdatingUseCase(department_repository)
+    use_case = DepartmentUpdatingUseCase(department_repository, employee_repository)
     department = await use_case.execute(company_id, department_id, data)
     return department
 
@@ -72,7 +74,8 @@ async def delete_department(
     ],
 ) -> Response:
     use_case = DepartmentDeletingUseCase(department_repository)
-    await use_case.execute(
-        DepartmentDeletingInputDTO(company_id=company_id, department_id=department_id)
+    input_dto = DepartmentDeletingInputDTO(
+        company_id=company_id, department_id=department_id
     )
+    await use_case.execute(input_dto)
     return Response(status_code=status.HTTP_204_NO_CONTENT)

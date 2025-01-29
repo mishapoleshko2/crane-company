@@ -19,3 +19,8 @@ class DepartmentNotFound(SystemException):
 class CompanyHasNotDepartmenError(SystemException):
     def __init__(self) -> None:
         super().__init__("The company doesn`t have the department")
+
+
+class EmployeeNotFound(SystemException):
+    def __init__(self) -> None:
+        super().__init__("Employee not found")

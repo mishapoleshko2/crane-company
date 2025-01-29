@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, EmailStr
 
 
 class Employee(BaseModel):
@@ -12,4 +12,4 @@ class Employee(BaseModel):
     department_id: int | None = None
 
     phone_number: str | None = None
-    email: str | None = None
+    email: EmailStr | None = None

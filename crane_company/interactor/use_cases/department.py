@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from crane_company.interactor.exceptions import DepartmentNotFound
+from crane_company.interactor.exceptions import DepartmentNotFound, EmployeeNotFound
 from crane_company.interactor.ports.repositories.departmeny import DepartmentRepository
 from crane_company.interactor.dto.department import (
     DepartmentUseCasesOutputDTO as OutputDTO,
@@ -8,6 +8,7 @@ from crane_company.interactor.dto.department import (
     DepartmentDeletingInputDTO,
     DepartmentUpdatingInputDTO,
 )
+from crane_company.interactor.ports.repositories.employee import EmployeeRepository
 
 
 @dataclass
@@ -48,10 +49,17 @@ class CompanyDepartmentsGettingUseCase:
 @dataclass
 class DepartmentUpdatingUseCase:
     department_repository: DepartmentRepository
+    employee_repository: EmployeeRepository
 
     async def execute(
         self, company_id: int, department_id: int, input_dto: DepartmentUpdatingInputDTO
     ) -> OutputDTO:
+
+        if input_dto.head_id:
+            employee = await self.employee_repository.get_employee(input_dto.head_id)
+            if not employee or employee.company_id != company_id:
+                raise EmployeeNotFound
+
         department = await self.department_repository.get_company_department(
             company_id, department_id
         )
