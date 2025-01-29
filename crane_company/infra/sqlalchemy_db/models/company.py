@@ -1,4 +1,4 @@
-from sqlalchemy.orm import mapped_column, Mapped, relationship
+from sqlalchemy.orm import mapped_column, Mapped
 from sqlalchemy import ForeignKey
 
 from crane_company.infra.sqlalchemy_db.db import Base
@@ -25,4 +25,3 @@ class UserCompany(Base):
     company_id: Mapped[int] = mapped_column(
         ForeignKey("company.id"), nullable=False, index=True
     )
-

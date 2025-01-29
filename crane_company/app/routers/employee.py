@@ -62,7 +62,7 @@ async def delete_employee(
     employee_repository: Annotated[
         EmployeeRepository, Depends(get_employee_repository)
     ],
-) -> None:
+) -> Response:
     use_case = EmployeeDeletingUseCase(employee_repository)
     input_dto = EmployeeDeletingInputDTO(company_id=company_id, employee_id=employee_id)
     await use_case.execute(input_dto)

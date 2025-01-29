@@ -74,7 +74,7 @@ class EmployeeUpdatingUseCase:
             raise CompanyHasNotDepartmenError
 
         employee = await self.employee_repository.get_employee(input_dto.employee_id)
-        if employee.company_id != input_dto.company_id:
+        if not employee or employee.company_id != input_dto.company_id:
             raise EmployeeNotFound
         await self.employee_repository.update_employee(employee, updating_data)
         return employee

@@ -24,7 +24,7 @@ class Employee(Base):
     phone_number: Mapped[str] = mapped_column(nullable=True)
     email: Mapped[str] = mapped_column(nullable=True)
 
-    def to_entity(self) -> None:
+    def to_entity(self) -> DomainEmployee:
         employee = DomainEmployee(
             id=self.id,
             first_name=self.first_name,

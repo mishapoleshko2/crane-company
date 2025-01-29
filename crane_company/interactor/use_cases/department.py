@@ -54,7 +54,6 @@ class DepartmentUpdatingUseCase:
     async def execute(
         self, company_id: int, department_id: int, input_dto: DepartmentUpdatingInputDTO
     ) -> OutputDTO:
-
         if input_dto.head_id:
             employee = await self.employee_repository.get_employee(input_dto.head_id)
             if not employee or employee.company_id != company_id:

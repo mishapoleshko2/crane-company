@@ -56,7 +56,7 @@ class PGDepartmentRepository(DepartmentRepository):
 
     async def update_department(
         self, department: Department, data: DepartmentUpdatingInputDTO
-    ) -> Department:
+    ) -> None:
         updatings = data.model_dump(exclude_unset=True)
         db_department = await self.session.get(DBDepartment, department.id)
 

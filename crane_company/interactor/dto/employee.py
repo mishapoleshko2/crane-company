@@ -11,7 +11,6 @@ class EmployeeCreatingPayload(BaseModel):
     department_id: int | None = Field(default=None)
 
     phone_number: str | None = Field(default=None)
-    phone_number: str | None = Field(default=None)
     email: EmailStr | None = Field(default=None)
 
 

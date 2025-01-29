@@ -2,7 +2,10 @@ from typing import Annotated
 
 from fastapi import APIRouter, Depends, Response, status
 
-from crane_company.app.dependencies import get_department_repository, get_employee_repository
+from crane_company.app.dependencies import (
+    get_department_repository,
+    get_employee_repository,
+)
 from crane_company.interactor.dto.department import (
     DeparnmentCreatingInputDTO,
     APIDeparnmentCreatingInputDTO,
@@ -57,7 +60,9 @@ async def update_department(
         DepartmentRepository,
         Depends(get_department_repository),
     ],
-    employee_repository: Annotated[EmployeeRepository, Depends(get_employee_repository)],
+    employee_repository: Annotated[
+        EmployeeRepository, Depends(get_employee_repository)
+    ],
     data: DepartmentUpdatingInputDTO,
 ) -> DepartmentUseCasesOutputDTO:
     use_case = DepartmentUpdatingUseCase(department_repository, employee_repository)
