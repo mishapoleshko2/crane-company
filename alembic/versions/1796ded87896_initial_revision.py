@@ -104,6 +104,8 @@ def downgrade() -> None:
     op.drop_table("user_company")
     op.drop_index(op.f("ix_employee_department_id"), table_name="employee")
     op.drop_index(op.f("ix_employee_company_id"), table_name="employee")
+    op.drop_constraint("fk_employee_department_id_department", "employee", type_="foreignkey")
+    op.drop_constraint("fk_department_head_id_employee", "department", type_="foreignkey")
     op.drop_table("employee")
     op.drop_index(op.f("ix_department_head_id"), table_name="department")
     op.drop_index(op.f("ix_department_company_id"), table_name="department")
