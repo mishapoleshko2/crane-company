@@ -25,4 +25,4 @@ class UserCompany(Base):
     company_id: Mapped[int] = mapped_column(
         ForeignKey("company.id"), nullable=False, index=True
     )
-    company: Mapped[Company] = relationship()
+
