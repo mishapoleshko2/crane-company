@@ -51,3 +51,6 @@ class PGCompanyRepository(CompanyRepository):
         result = await self.session.execute(query)
         db_company = result.scalar_one_or_none()
         return db_company
+
+    async def get_user_company(self, user_id: int) -> Company | None:
+        return await super().get_user_company(user_id)

@@ -1,6 +1,7 @@
 from typing import Annotated
 from fastapi import APIRouter, Body, Depends, Path, Response, status
 
+from crane_company.app.auth import verify_user
 from crane_company.app.dependencies import (
     get_employee_repository,
     get_department_repository,
@@ -23,7 +24,11 @@ from crane_company.interactor.use_cases.employee import (
 )
 
 
-router = APIRouter(prefix="/{company_id}/employees", tags=["employee"])
+router = APIRouter(
+    prefix="/{company_id}/employees",
+    tags=["employee"],
+    dependencies=[Depends(verify_user)],
+)
 
 
 @router.post("/", name="employee creating")

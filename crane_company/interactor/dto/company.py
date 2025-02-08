@@ -3,9 +3,13 @@ from pydantic import BaseModel
 from crane_company.domain.models.company import Company
 
 
-class CompanyCreatingInputDTO(BaseModel):
+class CompanyCreatingSchema(BaseModel):
     name: str
+
+
+class CompanyCreatingInputDTO(BaseModel):
     user_id: int
+    schema: CompanyCreatingSchema
 
 
 CompanyUseCasesOutputDTO = Company

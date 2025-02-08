@@ -18,7 +18,7 @@ class CompanyCreatingUseCase:
         self, input_dto: CompanyCreatingInputDTO
     ) -> CompanyUseCasesOutputDTO:
         company = await self.company_repository.create_company(
-            input_dto.name, input_dto.user_id
+            input_dto.schema.name, input_dto.user_id
         )
         return company
 

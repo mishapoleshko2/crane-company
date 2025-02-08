@@ -17,8 +17,10 @@ for exc, handler in ERROR_HANDLERS.items():
 def main(
     host: str = typer.Argument("127.0.0.1", help="Application host"),
     port: int = typer.Argument(8000, help="Application port"),
+    workers: int = typer.Argument(1, help="Uvicorn workers"),
+    reload: bool = typer.Option(False, help="Reload uvicorn app"),
 ) -> None:
-    uvicorn.run(app, host=host, port=port)
+    uvicorn.run("main:app", host=host, port=port, reload=reload, workers=workers)
 
 
 if __name__ == "__main__":

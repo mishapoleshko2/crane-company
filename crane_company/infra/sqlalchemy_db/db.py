@@ -19,5 +19,5 @@ class Base(AsyncAttrs, DeclarativeBase):
     metadata = metadata
 
 
-engine = create_async_engine(str(settings.db_uri))
+engine = create_async_engine(str(settings.company_db_uri))
 async_session = async_sessionmaker(bind=engine, expire_on_commit=False)

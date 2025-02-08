@@ -13,7 +13,7 @@ from crane_company.infra.sqlalchemy_db.db import Base
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
-config.set_main_option("sqlalchemy.url", str(settings.db_uri))
+config.set_main_option("sqlalchemy.url", str(settings.company_db_uri))
 
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.
